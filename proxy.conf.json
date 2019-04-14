@@ -1,0 +1,11 @@
+{
+  "/secure": {
+    "target": "http://localhost/mtdb/server",
+    "secure": false,
+    "pathRewrite": {"^/secure" : ""}
+  },
+  "/storage": {
+    "target": "http://localhost/mtdb/server",
+    "secure": false
+  }
+}

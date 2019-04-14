@@ -1,0 +1,22 @@
+@import "../../../../../scss/variables";
+
+title-action-poster-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.85;
+
+  .mat-flat-button, .mat-stroked-button {
+    background-color: #f44336;
+    color:#fff!important;
+    width: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    min-width: 40px;
+    padding:0px;
+      svg {
+        display: block;
+      }
+    
+  }
+}
