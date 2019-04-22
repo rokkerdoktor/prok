@@ -102,6 +102,36 @@ title-secondary-details-panel {
       min-height: 100%;
       overflow: hidden;
       height:100%;
+      .quality{
+        background: #00000061;
+        color: white;
+        font-weight: bold;
+        padding: 6px;
+        border-top-right-radius: 5px;
+        position: absolute;
+        bottom:0;
+        left:0;
+        opacity: 0.85;
+          img{
+            display: inline-block;
+          }
+      }
+
+      .language{
+        background: #00000061;
+        color: white;
+        font-weight: bold;
+        padding: 6px;
+        border-bottom-right-radius: 5px;
+        position: absolute;
+        top:0;
+        left:0;
+        opacity: 0.85;
+        img{
+          display: inline-block;
+        }
+      }
+
       button{
         font-size:18px;
         border: solid 3px #fff;

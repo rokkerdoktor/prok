@@ -38,7 +38,7 @@ export class TitlesService {
     constructor(private http: AppHttpClient) {}
 
     public get(titleId: number, queryParams?: GetTitleQueryParams): BackendResponse<GetTitleResponse> {
-        return this.http.get('titles/' + titleId, queryParams);
+        return this.http.get('titles/' + titleId, queryParams); 
         /* return this.http.get('http://localhost/filmgo/secure/titles/' + titleId, queryParams); */
     }
 

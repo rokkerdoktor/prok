@@ -1,0 +1,23 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  #mycomment {
+    float: left;
+    width: 100%;
+    margin: 0 0 24px;
+    display: flex;
+}
+#avatar {
+  float: left;
+  margin-right: 10px;
+}
+#textare {
+  float: left;
+  flex-grow: 1;
+}

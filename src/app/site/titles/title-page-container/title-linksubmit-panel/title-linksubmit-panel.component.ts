@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'title-linksubmit-panel',
@@ -12,6 +13,9 @@ export class TitleLinksubmitPanelComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    $(function() {
+      alert("asd")
+   });
   }
 
 }

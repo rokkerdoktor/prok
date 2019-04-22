@@ -75,7 +75,9 @@ import { TitleCommentPanelComponent } from './titles/title-page-container/title-
 import { TitleLinksubmitPanelComponent } from './titles/title-page-container/title-linksubmit-panel/title-linksubmit-panel.component';
 import { TitleActionPosterButtonsComponent } from './titles/components/title-action-poster-buttons/title-action-poster-buttons.component';
 import { TitleVideosPanelComponent } from './titles/title-page-container/title-videos-panel/title-videos-panel.component';
-
+import { MatInputModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material';
+import { MatGridListModule,  MatIconModule, } from '@angular/material';
 @NgModule({
     imports: [
         CommonModule,
@@ -84,6 +86,10 @@ import { TitleVideosPanelComponent } from './titles/title-page-container/title-v
         ChipInputModule,
 
         // material
+        MatIconModule,
+        MatGridListModule,
+        MatFormFieldModule,
+        MatInputModule,
         MatAutocompleteModule,
         MatSidenavModule,
         MatExpansionModule,

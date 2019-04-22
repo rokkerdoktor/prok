@@ -48,13 +48,14 @@
             </div>
         </div>
     </section>
-
     <section class="right">
             <div class="list">
                     <img class="preview" [src]="image.url" *ngFor="let image of title.images">
-                    <button  matTooltip="Linkek megtekintése" class="playing" mat-fab (click)="playVideo(trailer)" *ngIf="trailer$ | async as trailer">
+                    <button  matTooltip="Linkek megtekintése" class="playing"  mat-fab (click)="linkmegtekintes()">
                             <mat-icon svgIcon="play-arrow"></mat-icon>
                     </button>
+                    <div class="quality">{{quality()}}</div>
+                    <div class="language" matTooltip="{{languagetext()}}"><img src="{{language()}}"> {{languagetext()}}</div>
             </div>
         <title-action-buttons [item]="title"></title-action-buttons>
     </section>

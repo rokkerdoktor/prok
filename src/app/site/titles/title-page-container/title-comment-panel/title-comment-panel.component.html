@@ -1,3 +1,29 @@
-<p>
-  title-comment-panel works!
-</p>
+<ng-container *ngIf="currentUser.isLoggedIn(); else notloged">
+its loged
+<img class="avatar" src="{{currentUser.get('avatar')}}">
+
+<div class="email">{{currentUser.get('name')}}</div>
+</ng-container>
+
+<ng-template #notloged>
+
+    <div id="mycomment">
+        <div id="avatar"> <img src="https://filmgo.cc/avatars/1.jpg"></div>
+
+        <mat-form-field class="example-full-width">
+            <textarea cols="30" rows="5" matInput placeholder="Szólj hozzá"></textarea>
+        </mat-form-field>
+        <div id="textaresubmit">
+            <button mat-flat-button color="primary">Hozzászólás</button>
+        </div>
+    </div>
+
+    
+    <form class="example-form">
+
+      </form>
+      {{myHero}}
+      <ng-container *ngIf="title$ | async as title">
+            {{title.urlkey}}
+        </ng-container>
+</ng-template>

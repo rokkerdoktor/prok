@@ -55,6 +55,9 @@ export class Title {
     reviews?: Review[];
     language: string;
     show_videos: boolean;
+  links_quality: any;
+  links_language: any;
+  urlkey:any;
 
     constructor(params: Object = {}) {
         for (const name in params) {
