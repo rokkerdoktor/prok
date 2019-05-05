@@ -39,11 +39,10 @@ export class TitleSecondaryDetailsPanelComponent implements OnChanges {
             $(".preview").hide();
           var myInterval ;
           $("div.list").each(function() {
-            $(".preview:first", this).show();
+            $(".preview:nth-child(5)", this).show();
             $(this).height($(".preview:first", this).height());
           });
           $('.preview').hover(function(e) {
-            console.log("prew");
               var $imgGrp = $(e.target);
               var $parent = $imgGrp.parent();
               var $firstImage = $parent.children('.preview:first');
@@ -72,11 +71,9 @@ export class TitleSecondaryDetailsPanelComponent implements OnChanges {
               myInterval = false;
             });
             $( ".playing" ).hover(function() {
-              console.log("bent");
               $('.preview:first').mouseenter();
             },
             function() {
-              console.log("kint");
               $('.preview:first').mouseleave();
             });
          });

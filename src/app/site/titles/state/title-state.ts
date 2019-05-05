@@ -28,6 +28,12 @@ export class TitleState {
     ) {}
 
     @Selector()
+    static Comments(state: TitleStateModel) {
+        return state.title.comments;
+    }
+
+
+    @Selector()
     static backdrop(state: TitleStateModel) {
         return state.title.backdrop;
     }

@@ -78,6 +78,10 @@ import { TitleVideosPanelComponent } from './titles/title-page-container/title-v
 import { MatInputModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material';
 import { MatGridListModule,  MatIconModule, } from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
+import { TitleCommentPanelDialogComponent } from './titles/title-page-container/title-comment-panel/title-comment-panel-dialog/title-comment-panel-dialog.component';
+import { DialogContentExampleDialog } from './titles/title-page-container/title-comment-panel/title-comment-panel.component';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -86,6 +90,7 @@ import { MatGridListModule,  MatIconModule, } from '@angular/material';
         ChipInputModule,
 
         // material
+        MatCardModule,
         MatIconModule,
         MatGridListModule,
         MatFormFieldModule,
@@ -167,8 +172,11 @@ import { MatGridListModule,  MatIconModule, } from '@angular/material';
         TitleLinksubmitPanelComponent,
         TitleActionPosterButtonsComponent,
         TitleVideosPanelComponent,
+        TitleCommentPanelDialogComponent,
+        DialogContentExampleDialog,
     ],
     entryComponents: [
+        DialogContentExampleDialog,
         PlayerComponent,
         StarRatingOverlayComponent,
         CrupdateReviewModalComponent,

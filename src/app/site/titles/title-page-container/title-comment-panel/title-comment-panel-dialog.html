@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Komment szerkesztés</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-card class="mycomment">
+        <mat-card-header>
+          <mat-card-actions>
+              <button (click)="save(data.commentid)" [mat-dialog-close] cdkFocusInitial mat-button>
+              <mat-icon svgIcon="open-in-new"></mat-icon>
+              Frissítés
+            </button>
+          </mat-card-actions>
+        </mat-card-header>
+        <mat-card-content>
+                <textarea required minlength="5" maxlength="30"  [(ngModel)]="data.oldmycommenct"  rows="4" class="kommentem">
+                </textarea>
+        </mat-card-content>
+      </mat-card>
+    </mat-dialog-content>
+

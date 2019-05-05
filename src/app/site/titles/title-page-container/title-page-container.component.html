@@ -10,13 +10,13 @@
 
 
         <mat-tab-group color="accent" animationDuration="0ms">
-            <mat-tab [label]="'Cast' | trans">
-                <title-cast-panel></title-cast-panel>
-            </mat-tab>
             <mat-tab [label]="'Comment' | trans">
                     <ng-template matTabContent>
                         <title-comment-panel></title-comment-panel>
                     </ng-template>
+            </mat-tab>
+            <mat-tab [label]="'Cast' | trans">
+                <title-cast-panel></title-cast-panel>
             </mat-tab>
         <ng-container *ngIf="currentUser.isLoggedIn();">
             <mat-tab [label]="'Link submit' | trans">

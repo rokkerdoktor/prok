@@ -1,29 +1,57 @@
+<!--Its logged-->
 <ng-container *ngIf="currentUser.isLoggedIn(); else notloged">
-its loged
-<img class="avatar" src="{{currentUser.get('avatar')}}">
 
-<div class="email">{{currentUser.get('name')}}</div>
+<mat-card class="mycomment">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"><img src="{{currentUser.get('avatar')}}"></div>
+      <mat-card-title>{{currentUser.get('name')}}</mat-card-title>
+      <mat-card-subtitle>Admin</mat-card-subtitle>
+      <mat-card-actions>
+        <button mat-button (click)="send(currentUser.get('id'))">
+          <mat-icon svgIcon="open-in-new"></mat-icon>
+          Hozzászólok
+        </button>
+      </mat-card-actions>
+    </mat-card-header>
+    <mat-card-content>
+            <textarea  [(ngModel)]="logincomment"  rows="4" id="logincomment" class="kommentem" matInput placeholder="Hogy tetszett a film? Írd le a véleményed..." required></textarea>
+    </mat-card-content>
+  </mat-card>
 </ng-container>
 
+
+<!--Its not logged-->
 <ng-template #notloged>
 
-    <div id="mycomment">
-        <div id="avatar"> <img src="https://filmgo.cc/avatars/1.jpg"></div>
-
-        <mat-form-field class="example-full-width">
-            <textarea cols="30" rows="5" matInput placeholder="Szólj hozzá"></textarea>
-        </mat-form-field>
-        <div id="textaresubmit">
-            <button mat-flat-button color="primary">Hozzászólás</button>
-        </div>
-    </div>
-
-    
-    <form class="example-form">
-
-      </form>
-      {{myHero}}
-      <ng-container *ngIf="title$ | async as title">
-            {{title.urlkey}}
-        </ng-container>
 </ng-template>
+
+<!--Comments-->
+
+<div id="comments-show">
+<ng-container *ngIf="comments$ | async as comments">
+<div *ngIf="comments && comments.length; else noComments">
+<mat-card  id="main-comments" class="example-card" *ngFor="let comment of productsObservable | async">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"><img src="{{comment.user.avatar}}"></div>
+      <mat-card-title>{{comment.user.username}}</mat-card-title>
+      <mat-card-subtitle>Admin</mat-card-subtitle>
+      <mat-card-actions *ngIf="currentUser.isLoggedIn();">
+        <button (click)="valasz(comment)" *ngIf="currentUser.get('id') != comment.user_id" mat-button><mat-icon svgIcon="reply"></mat-icon> Válasz</button>
+        <button (click)="szerkesztes(comment)" *ngIf="currentUser.get('id') == comment.user_id || currentUser.hasPermission('admin.access')" mat-button><mat-icon svgIcon="edit"></mat-icon> Szerkesztés</button>
+        <button (click)="torles(comment)" *ngIf="currentUser.get('id') == comment.user_id || currentUser.hasPermission('admin.access')" mat-button><mat-icon color="danger" svgIcon="delete"></mat-icon> Törlés </button>
+      </mat-card-actions>
+  </mat-card-header>
+    <mat-card-content >
+{{comment.comment}}
+    </mat-card-content>
+  </mat-card>
+  </div>
+  <!--No comments-->
+  <ng-template #noComments>
+      <no-results-message>
+          <span primary-text trans>Nothing to Display.</span>
+          <span secondary-text trans>Be the first to review this title.</span>
+      </no-results-message>
+  </ng-template>
+</ng-container>  
+</div>

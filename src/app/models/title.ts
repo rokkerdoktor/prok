@@ -1,5 +1,6 @@
 import {Person} from './person';
 import {Video} from './video';
+import {Comment} from './comment';
 import {Image} from './image';
 import {MEDIA_TYPE} from '../site/media-type';
 import {Episode} from './episode';
@@ -52,12 +53,13 @@ export class Title {
     episodes: Episode[];
     season?: Season;
     seasons?: Season[];
+    comments?: Comment[];
     reviews?: Review[];
     language: string;
     show_videos: boolean;
-  links_quality: any;
-  links_language: any;
-  urlkey:any;
+    links_quality: any;
+    links_language: any;
+    urlkey:any;
 
     constructor(params: Object = {}) {
         for (const name in params) {

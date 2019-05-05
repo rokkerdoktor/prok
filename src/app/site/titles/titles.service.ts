@@ -3,6 +3,7 @@ import {AppHttpClient} from '../../../common/core/http/app-http-client.service';
 import {BackendResponse} from '../../../common/core/types/backend-response';
 import {Title, TitleCredit, TitleCreditPivot} from '../../models/title';
 import {Video} from '../../models/video';
+import {Comment} from '../../models/comment';
 import {Episode} from '../../models/episode';
 import {PaginatedBackendResponse} from '../../../common/core/types/paginated-backend-response';
 import {Tag} from '../../../common/core/types/models/Tag';
@@ -38,8 +39,14 @@ export class TitlesService {
     constructor(private http: AppHttpClient) {}
 
     public get(titleId: number, queryParams?: GetTitleQueryParams): BackendResponse<GetTitleResponse> {
-        return this.http.get('titles/' + titleId, queryParams); 
+        return this.http.get('titles/' + titleId, queryParams);  
         /* return this.http.get('http://localhost/filmgo/secure/titles/' + titleId, queryParams); */
+    }
+    public getComment(titleId: number): BackendResponse<{comments: Comment[]}> {
+        return this.http.get('comment/' + titleId);
+    }
+    public deleteComment(titleId: number):  BackendResponse<void> {
+        return this.http.delete('comment/' + titleId);
     }
 
     public getAll(queryParams?: BrowseTitlesQueryParams): PaginatedBackendResponse<Title> {
