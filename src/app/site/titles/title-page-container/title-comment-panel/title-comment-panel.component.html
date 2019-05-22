@@ -4,8 +4,7 @@
 <mat-card class="mycomment">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"><img src="{{currentUser.get('avatar')}}"></div>
-      <mat-card-title>{{currentUser.get('name')}}</mat-card-title>
-      <mat-card-subtitle>Admin</mat-card-subtitle>
+      <mat-card-title>{{currentUser.get('display_name')}}</mat-card-title>
       <mat-card-actions>
         <button mat-button (click)="send(currentUser.get('id'))">
           <mat-icon svgIcon="open-in-new"></mat-icon>
@@ -14,15 +13,14 @@
       </mat-card-actions>
     </mat-card-header>
     <mat-card-content>
-            <textarea  [(ngModel)]="logincomment"  rows="4" id="logincomment" class="kommentem" matInput placeholder="Hogy tetszett a film? Írd le a véleményed..." required></textarea>
+      <textarea  [(ngModel)]="logincomment" (ngModelChange)="valasz($event)"  rows="4" id="logincomment" class="kommentem" matInput placeholder="Hogy tetszett a film? Írd le a véleményed..." required></textarea>      
     </mat-card-content>
   </mat-card>
 </ng-container>
 
-
 <!--Its not logged-->
 <ng-template #notloged>
-
+    <div class="info">Hozzászoláshoz kérjük jelentkezz be!</div>
 </ng-template>
 
 <!--Comments-->
@@ -33,14 +31,13 @@
 <mat-card  id="main-comments" class="example-card" *ngFor="let comment of productsObservable | async">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"><img src="{{comment.user.avatar}}"></div>
-      <mat-card-title>{{comment.user.username}}</mat-card-title>
-      <mat-card-subtitle>Admin</mat-card-subtitle>
+      <mat-card-title>{{comment.user.display_name}}  <span class="c_group" *ngIf="comment.user.permissions.admin == 1"  style="background-color:#f44336;">Admin</span></mat-card-title>
+
       <mat-card-actions *ngIf="currentUser.isLoggedIn();">
-        <button (click)="valasz(comment)" *ngIf="currentUser.get('id') != comment.user_id" mat-button><mat-icon svgIcon="reply"></mat-icon> Válasz</button>
         <button (click)="szerkesztes(comment)" *ngIf="currentUser.get('id') == comment.user_id || currentUser.hasPermission('admin.access')" mat-button><mat-icon svgIcon="edit"></mat-icon> Szerkesztés</button>
         <button (click)="torles(comment)" *ngIf="currentUser.get('id') == comment.user_id || currentUser.hasPermission('admin.access')" mat-button><mat-icon color="danger" svgIcon="delete"></mat-icon> Törlés </button>
       </mat-card-actions>
-  </mat-card-header>
+</mat-card-header>
     <mat-card-content >
 {{comment.comment}}
     </mat-card-content>
@@ -48,10 +45,8 @@
   </div>
   <!--No comments-->
   <ng-template #noComments>
-      <no-results-message>
-          <span primary-text trans>Nothing to Display.</span>
-          <span secondary-text trans>Be the first to review this title.</span>
-      </no-results-message>
+    <div class="error">Nincsenek hozzászólások!</div>
   </ng-template>
 </ng-container>  
 </div>
+<loading-indicator [isVisible]="loading$ | async" class="overlay overlay-light"></loading-indicator>

@@ -81,6 +81,8 @@ import { MatGridListModule,  MatIconModule, } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import { TitleCommentPanelDialogComponent } from './titles/title-page-container/title-comment-panel/title-comment-panel-dialog/title-comment-panel-dialog.component';
 import { DialogContentExampleDialog } from './titles/title-page-container/title-comment-panel/title-comment-panel.component';
+import { SeriesPrimaryDetailsPanelComponent } from './titles/title-page-container/series-primary-details-panel/series-primary-details-panel.component';
+import { SeriesSecondaryDetailsPanelComponent } from './titles/title-page-container/series-secondary-details-panel/series-secondary-details-panel.component';
 
 @NgModule({
     imports: [
@@ -174,6 +176,8 @@ import { DialogContentExampleDialog } from './titles/title-page-container/title-
         TitleVideosPanelComponent,
         TitleCommentPanelDialogComponent,
         DialogContentExampleDialog,
+        SeriesPrimaryDetailsPanelComponent,
+        SeriesSecondaryDetailsPanelComponent,
     ],
     entryComponents: [
         DialogContentExampleDialog,

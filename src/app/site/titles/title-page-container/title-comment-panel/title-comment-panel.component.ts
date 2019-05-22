@@ -75,7 +75,7 @@ export class TitleCommentPanelComponent {
     }
     )
     .subscribe(
-      this.router.navigateByUrl('/titles/1', {skipLocationChange: true}).then(()=>
+      this.router.navigateByUrl('/titles/1', {skipLocationChange: false}).then(()=>
       this.router.navigate([this.location.path()]))
     ))
     .pipe(finalize(() => this.loading$.next(true)))
@@ -95,13 +95,7 @@ export class TitleCommentPanelComponent {
  }
 
 
- public valasz(Comment){
 
-  $(function() {
-    $('#logincomment').append(Comment.comment);
-    console.log(Comment.user);
- });
- }
 
  public torles(Comment){
   this.modal.show(ConfirmModalComponent, {
@@ -146,15 +140,12 @@ export class DialogContentExampleDialog {
     this.commentid=this.data.commentid;
   }
 
-
 public save(id){
-
-  
   this.store.dispatch(this.http.put('comment/' + id,
   {comment: this.data.oldmycommenct}
   )
 .subscribe(
-this.router.navigateByUrl('/titles/1', {skipLocationChange: true}).then(()=>
+this.router.navigateByUrl('/titles/1', {skipLocationChange: false}).then(()=>
 this.router.navigate([this.location.path()]))
 ))
 .pipe(finalize(() => this.loading$.next(true)))
