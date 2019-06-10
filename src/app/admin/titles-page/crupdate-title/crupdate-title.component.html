@@ -8,6 +8,7 @@
 <tags-panel class="material-panel crupdate-title-panel" type="genre" [class.hidden]="!panelIsOpen('genres')"></tags-panel>
 <tags-panel class="material-panel crupdate-title-panel" type="production_country" displayType="country" [class.hidden]="!panelIsOpen('countries')"></tags-panel>
 <reviews-panel class="material-panel crupdate-title-panel" [class.hidden]="!panelIsOpen('reviews')"></reviews-panel>
+<link-panel class="material-panel crupdate-title-panel" [class.hidden]="!panelIsOpen('link')"></link-panel>
 
 <aside class="sidebar material-panel">
     <div class="header" trans>Edit</div>
@@ -22,6 +23,7 @@
         <button class="list-item no-style" [disabled]="!titleCreated()" (click)="openPanel('keywords')" [class.active]="panelIsOpen('keywords')" trans>Keywords</button>
         <button class="list-item no-style" [disabled]="!titleCreated()" (click)="openPanel('countries')" [class.active]="panelIsOpen('countries')" trans>Countries</button>
         <button class="list-item no-style" [disabled]="!titleCreated()" (click)="openPanel('reviews')" [class.active]="panelIsOpen('reviews')" trans>Reviews</button>
+        <button class="list-item no-style" [disabled]="!titleCreated()" (click)="openPanel('link')" [class.active]="panelIsOpen('link')" trans>Links</button>
     </div>
     <p *ngIf="!titleCreated()" class="message" trans>Save from "Primary Facts" panel in order to enable other menu items.</p>
 </aside>

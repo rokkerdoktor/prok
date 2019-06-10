@@ -1,6 +1,34 @@
 <ng-container *ngIf="title$ | async as title">
+
         <section class="left">
-            <div class="img-container">
-            </div>
+                <div class="img-container">
+                    <media-image  *ngIf="season$ | async as season" [src]="season.poster" size="medium"></media-image>
+                    <title-action-poster-buttons [item]="title" ></title-action-poster-buttons>
+                    <a mat-fab (click)="playVideo(trailer)" *ngIf="trailer$ | async as trailer"> 
+                        <mat-icon svgIcon="play-arrow"></mat-icon> Előzetes megtekintése
+                    </a>
+                </div>
+                <div class="details">
+                    <div class="detail">
+                        <div class="name" trans>Plot</div>
+                        <div class="value" moreLessText="340">
+                            <ng-container *ngIf="episode$ | async as episode">{{episode.description}}</ng-container>
+                        </div>
+                    </div>
+                </div>
         </section>
-    </ng-container>
+        <section class="right">
+                <div class="list">
+                        <img class="preview"  *ngIf="episode$ | async as episode" [src]="episode.poster">
+                        <button  matTooltip="Linkek megtekintése" class="playing"  mat-fab (click)="linkmegtekintes()">
+                                <mat-icon svgIcon="play-arrow"></mat-icon>
+                        </button>
+                        <div class="rating" ><rating-widget *ngIf="episode$ | async as episode"  [item]="episode"></rating-widget></div>
+                        
+                        <div class="quality">{{quality()}}</div>
+                        <div class="language" matTooltip="{{languagetext()}}"><img src="{{language()}}"> {{languagetext()}}</div> 
+                </div>
+            <title-action-buttons [item]="title"></title-action-buttons>
+        </section>
+
+</ng-container>

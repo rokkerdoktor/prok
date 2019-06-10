@@ -7,6 +7,7 @@ import {Episode} from './episode';
 import {Season} from './season';
 import {Tag} from '../../common/core/types/models/Tag';
 import {Review} from './review';
+import {Link} from './link';
 
 export interface GroupedCredits {
     [key: string]: TitleCredit[];
@@ -60,6 +61,7 @@ export class Title {
     links_quality: any;
     links_language: any;
     urlkey:any;
+    links?: Link[];
 
     constructor(params: Object = {}) {
         for (const name in params) {

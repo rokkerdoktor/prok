@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {Episode} from '../../../../models/episode';
 import {ToggleGlobalLoader} from '../../../../state/app-state-actions';
 import {Settings} from '../../../../../common/core/config/settings.service';
+import {CurrentUser} from 'common/auth/current-user';
 
 @Component({
     selector: 'episode-page',
@@ -18,6 +19,7 @@ export class EpisodePageComponent implements OnInit {
     @Select(TitleState.backdrop) backdropImage$: Observable<string>;
 
     constructor(
+        public currentUser: CurrentUser,
         private store: Store,
         public settings: Settings,
     ) {}

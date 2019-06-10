@@ -1,0 +1,220 @@
+@import "../../../../../scss/variables";
+
+series-secondary-details-panel {
+  display: flex;
+  overflow: hidden;
+
+  .left {
+    display: flex;
+    flex: 1 1 auto;
+    max-width: 600px;
+    margin-right: 35px;
+
+    .img-container {
+      flex: 0 0 250px;
+      width: 250px;
+      position: relative;
+
+      a {
+        cursor: pointer;
+        color: #ffffff;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        font-size: 14px;
+        text-align: center;
+        opacity: 0.85;
+        font-weight: bold;
+        background: unset;
+        box-shadow: unset;
+        border-radius: unset;
+        
+        mat-icon{
+          margin-bottom: 2px;
+        }
+      }
+
+      a:hover{
+      color: #ffc000;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        max-height: 375px;
+      }
+    }
+
+    .details {
+      margin-left: 25px;
+      flex: 1 1 auto;
+      min-width: 0;
+
+      .with-separator {
+        border-bottom: 1px solid $site-border-color-200;
+        padding-bottom: 15px;
+      }
+
+      .detail {
+        margin-bottom: 15px;
+      }
+
+      .name {
+        font-size: 1.6rem;
+        font-weight: 500;
+      }
+
+      .value {
+        overflow-wrap: break-word;
+
+        &.no-wrap {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      a {
+        color: inherit;
+      }
+    }
+
+    .seasons {
+      .season {
+        color: $site-accent-color;
+        margin-right: 10px;
+        font-size: 1.5rem;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .right {
+    width: 500px;
+    flex: 0 0 500px;
+    .list{
+      position: relative;
+      background-color: #000;
+      min-height: 100%;
+      overflow: hidden;
+      height:100%;
+      .quality{
+        background: #00000061;
+        color: white;
+        font-weight: bold;
+        padding: 6px;
+        border-top-right-radius: 5px;
+        position: absolute;
+        bottom:0;
+        left:0;
+        opacity: 0.85;
+          img{
+            display: inline-block;
+          }
+      }
+
+      .language{
+        background: #00000061;
+        color: white;
+        font-weight: bold;
+        padding: 6px;
+        border-bottom-right-radius: 5px;
+        position: absolute;
+        top:0;
+        left:0;
+        opacity: 0.85;
+        img{
+          display: inline-block;
+        }
+      }
+      .rating{
+
+        button{
+          top: 0px;
+          right: 0px;
+          left: unset;
+          opacity: 0.75;
+          position: absolute;
+          border:unset;
+        }
+      }
+      button{
+        font-size:18px;
+        border: solid 3px #fff;
+        background-color: rgba(0,0,0,.5);
+        position: absolute;
+        left: calc(50% - 28px);
+        top: calc(50% - 28px);
+        height:unset;
+        width:unset;
+        -webkit-transition: all .2s;
+        transition: all .2s;
+          span{
+            padding:unset;
+            mat-icon{
+              width: 56px;
+              height: 56px;
+            }
+          }
+
+      }
+      button:hover{
+        background-color:#f443368c;
+      }
+        .preview{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+    }
+    .video-cover {
+      position: relative;
+      background-color: #000;
+
+      @media only screen and (min-width: $medium) {
+        min-height: 100%;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      .mat-fab {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    }
+  }
+
+  @media only screen and (max-width: $large) {
+    display: block;
+    max-height: none;
+
+    .left, .right {
+      display: block;
+      width: auto;
+      max-width: initial;
+      flex: 1 1 auto;
+    }
+
+    .left  {
+      .img-container {
+        display: none;
+      }
+
+      .details {
+        margin: 25px 0 0;
+      }
+    }
+  }
+}

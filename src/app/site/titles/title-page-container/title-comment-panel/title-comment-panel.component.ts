@@ -18,7 +18,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 import {FormsModule} from '@angular/forms'
 import {User} from '../../../../../common/core/types/models/User';
 import { DataService } from './data.service';
-
+import {Episode} from '../../../../models/episode';
 export interface DialogData {
   mycommenct: string;
   oldmycommenct:string;
@@ -43,6 +43,7 @@ export class TitleCommentPanelComponent {
   @Select(TitleState.title) title$: Observable<Title>;
   @Select(TitleState.backdrop) backdropImage$: Observable<string>;
   @Select(TitleState.Comments) comments$: Observable<any[]>;
+  @Select(TitleState.episode) episode$: Observable<Episode>;
   private products  = []; 
   private productsObservable : Observable<any[]> ; 
   constructor(
@@ -62,21 +63,35 @@ export class TitleCommentPanelComponent {
               
 
   public send(userid){
-
+  
+    var currentepisode=0;
+    var currentseason=0;
     const title = this.store.selectSnapshot(TitleState.title);
     console.log(userid);
+    const episode = this.store.selectSnapshot(TitleState.episode);
+
+    if(this.router.url.includes('episode') == true)
+    {
+       currentepisode=episode.episode_number;
+       currentseason=episode.season_number;
+    }else{
+      currentepisode=0;
+      currentseason=0;
+    }
+
     this.store.dispatch(this.http.post('comment',
     {
       comment: this.logincomment,
       user_id:userid,
       title_id:title.id,
-      season:0,
-      episode:0,
+      season:currentseason,
+      episode:currentepisode,
     }
     )
     .subscribe(
-      this.router.navigateByUrl('/titles/1', {skipLocationChange: false}).then(()=>
-      this.router.navigate([this.location.path()]))
+  location.reload()
+
+
     ))
     .pipe(finalize(() => this.loading$.next(true)))
     .subscribe(() => this.toast.open(MESSAGES.COMMENT_ADD_SUCCESS));
@@ -145,8 +160,10 @@ public save(id){
   {comment: this.data.oldmycommenct}
   )
 .subscribe(
-this.router.navigateByUrl('/titles/1', {skipLocationChange: false}).then(()=>
-this.router.navigate([this.location.path()]))
+  location.reload()
+
+
+
 ))
 .pipe(finalize(() => this.loading$.next(true)))
 .subscribe(() => this.toast.open(MESSAGES.COMMENT_UPDATE_SUCCESS));

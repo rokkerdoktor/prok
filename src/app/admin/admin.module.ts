@@ -25,6 +25,8 @@ import { CrupdatePersonPageComponent } from './people-page/crupdate-person-page/
 import { ReviewsPanelComponent } from './titles-page/crupdate-title/panels/reviews-panel/reviews-panel.component';
 import {VideosPageComponent} from './videos-page/videos-page.component';
 import {ListsPageComponent} from './lists-page/lists-page.component';
+import { LinkPanelComponent } from './titles-page/crupdate-title/panels/link-panel/link-panel.component';
+import { LinkModalComponent } from './titles-page/crupdate-title/panels/link-panel/link-modal/link-modal.component';
 
 @NgModule({
     imports: [
@@ -68,8 +70,11 @@ import {ListsPageComponent} from './lists-page/lists-page.component';
         ReviewsPanelComponent,
         VideosPageComponent,
         ListsPageComponent,
+        LinkPanelComponent,
+        LinkModalComponent,
     ],
     entryComponents: [
+        LinkModalComponent,
         CrupdateCreditModalComponent,
         CrupdateEpisodeModalComponent,
         CrupdateTagModalComponent,

@@ -3,6 +3,33 @@
 rating-widget {
   display: flex;
   align-items: center;
+.score{
+  z-index: 1;
+  padding: 2px;
+  text-align: center;
+  font-size: 10px;
+  background: #00000061;
+  color: #fff;
+  float: left;
+  text-shadow: 1px 1px #757575;
+  border-radius: 3px;
+  position: absolute;
+  right: 0px;
+  top: 35px;
+}
+  .ratingbox{
+    line-height: unset;
+    z-index: 1;
+    padding: 5px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 12px;
+    background: #fbec01;
+    color: #fff;
+    float: left;
+    text-shadow: 1px 1px #757575;
+    border-radius: 3px;
+  }
 
   &.small {
     .mat-icon {
@@ -45,7 +72,9 @@ rating-widget {
 
     .score {
       font-weight: 500;
-    }
+      display: inline-block;
+      font-size: 1.0rem;
+      }
   }
 
   .rate-button {

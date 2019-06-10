@@ -1,23 +1,136 @@
-<div class="current-rating" *ngIf="item.rating">
-    <mat-icon svgIcon="star"></mat-icon>
-    <span class="text">{{item.rating}} / 10</span>
-</div>
-
 <ng-container *ngIf="showRateButton">
-    <div class="separator" *ngIf="item.rating"></div>
 
-    <button mat-button class="user-rating rate-button" *ngIf="userRating$ | async as userRating; else rateThis" (authClick)="openRatingOverlay($event)">
-        <mat-icon svgIcon="star"></mat-icon>
-        <span class="text">
-        <span trans>Your Score</span>:
-        <span class="score"> {{userRating.score}}</span>
-    </span>
-    </button>
+        <ng-container *ngIf="userRating$ | async as userRating; else rateThis">
+                <ng-container *ngIf="item.rating <= 4.9;else second">
+                        <button style="background:#e41415;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                <span class="text">{{item.rating}}</span>
+                        </button>
+                        <div class="score">Szavazatod: {{userRating.score}}/10</div>
+                </ng-container>
+                <ng-template #second>
+                    <ng-container *ngIf="item.rating >= 4.9 && item.rating <= 6.0;else third">
+                        <button style="background:#e8661a;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                <span class="text">{{item.rating}}</span>
+                        </button>
+                        <div class="score">Szavazatod: {{userRating.score}}/10</div>
+                    </ng-container>
+                </ng-template>
+
+                <ng-template #third>
+                        <ng-container *ngIf="item.rating >= 6.1 && item.rating <= 6.5;else fourth">
+                            <button style="background:#ef9714;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                    <span class="text">{{item.rating}}</span>
+                            </button>
+                            <div class="score">Szavazatod: {{userRating.score}}/10</div>
+                        </ng-container>
+                </ng-template>
+                <ng-template #fourth>
+                        <ng-container *ngIf="item.rating >= 6.6 && item.rating <= 7.0;else five">
+                            <button style="background:#dbb50e;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                    <span class="text">{{item.rating}}</span>
+                            </button>
+                            <div class="score">Szavazatod: {{userRating.score}}/10</div>
+                        </ng-container>
+                </ng-template>
+                <ng-template #five>
+                        <ng-container *ngIf="item.rating >= 7.1 && item.rating <=7.5;else six">
+                            <button style="background:#c8db0e;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                    <span class="text">{{item.rating}}</span>
+                            </button>
+                            <div class="score">Szavazatod: {{userRating.score}}/10</div>
+                        </ng-container>
+                </ng-template>
+                <ng-template #six>
+                        <ng-container *ngIf="item.rating >= 7.6 && item.rating <=8.0;else seven">
+                            <button style="background:#7fa429;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                    <span class="text">{{item.rating}}</span>
+                            </button>
+                            <div class="score">Szavazatod: {{userRating.score}}/10</div>
+                        </ng-container>
+                </ng-template>
+                <ng-template #seven>
+                        <ng-container *ngIf="item.rating >= 8.1 && item.rating <=8.5;else eight">
+                            <button style="background:#6ba429;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                    <span class="text">{{item.rating}}</span>
+                            </button>
+                            <div class="score">Szavazatod: {{userRating.score}}/10</div>
+                        </ng-container>
+                </ng-template>
+                <ng-template #eight>
+                        <ng-container *ngIf="item.rating >= 8.6 && item.rating <=10.0">
+                            <button style="background:#29a436;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                    <span class="text">{{item.rating}}</span>
+                            </button>
+                            <div class="score">Szavazatod: {{userRating.score}}/10</div>
+                        </ng-container>
+                </ng-template>
+
+
+        </ng-container>
 
     <ng-template #rateThis>
-        <button mat-button class="rate-this rate-button" (authClick)="openRatingOverlay($event)">
-            <mat-icon svgIcon="star-border"></mat-icon>
-            <span class="text" trans>Rate This</span>
-        </button>
+
+            <ng-container *ngIf="item.rating">
+
+                    <ng-container *ngIf="item.rating <= 4.9;else second">
+                            <button style="background:#e41415;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                    <span class="text">{{item.rating}}</span>
+                            </button>
+                    </ng-container>
+                    <ng-template #second>
+                        <ng-container *ngIf="item.rating >= 4.9 && item.rating <= 6.0;else third">
+                            <button style="background:#e8661a;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                    <span class="text">{{item.rating}}</span>
+                            </button>
+                        </ng-container>
+                    </ng-template>
+
+                    <ng-template #third>
+                            <ng-container *ngIf="item.rating >= 6.1 && item.rating <= 6.5;else fourth">
+                                <button style="background:#ef9714;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                        <span class="text">{{item.rating}}</span>
+                                </button>
+                            </ng-container>
+                    </ng-template>
+                    <ng-template #fourth>
+                            <ng-container *ngIf="item.rating >= 6.6 && item.rating <= 7.0;else five">
+                                <button style="background:#dbb50e;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                        <span class="text">{{item.rating}}</span>
+                                </button>
+                            </ng-container>
+                    </ng-template>
+                    <ng-template #five>
+                            <ng-container *ngIf="item.rating >= 7.1 && item.rating <=7.5;else six">
+                                <button style="background:#c8db0e;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                        <span class="text">{{item.rating}}</span>
+                                </button>
+                            </ng-container>
+                    </ng-template>
+                    <ng-template #six>
+                            <ng-container *ngIf="item.rating >= 7.6 && item.rating <=8.0;else seven">
+                                <button style="background:#7fa429;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                        <span class="text">{{item.rating}}</span>
+                                </button>
+                            </ng-container>
+                    </ng-template>
+                    <ng-template #seven>
+                            <ng-container *ngIf="item.rating >= 8.1 && item.rating <=8.5;else eight">
+                                <button style="background:#6ba429;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                        <span class="text">{{item.rating}}</span>
+                                </button>
+                            </ng-container>
+                    </ng-template>
+                    <ng-template #eight>
+                            <ng-container *ngIf="item.rating >= 8.6 && item.rating <=10.0">
+                                <button style="background:#29a436;" mat-button class="ratingbox"    (authClick)="openRatingOverlay($event)">
+                                        <span class="text">{{item.rating}}</span>
+                                </button>
+                            </ng-container>
+                    </ng-template>
+
+            </ng-container>
+
+
+
     </ng-template>
 </ng-container>

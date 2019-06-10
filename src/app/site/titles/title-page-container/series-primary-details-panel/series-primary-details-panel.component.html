@@ -1,3 +1,74 @@
-<p>
-  series-primary-details-panel works!
-</p>
+<ng-container *ngIf="title$ | async as title">
+<div class="row seasonaction">
+        <div *ngIf="episode$ | async as episode" [routerLink]="urls.season(title,episode.season_number)" class="left">
+                <mat-icon svgIcon="keyboard-arrow-left"></mat-icon> Vissza az epizódok listájához
+        </div>
+        <div  *ngIf="season$ | async as season"  class="right">
+            <div *ngIf="episode$ | async as episode"  class="prev"> <a *ngIf="episode.episode_number !=1" href="titles/{{title.id}}/season/{{episode.season_number}}/episode/{{episode.episode_number-1}}"><mat-icon svgIcon="keyboard-arrow-left"></mat-icon> Elöző epizód</a></div>
+            <div *ngIf="episode$ | async as episode"  class="next"><a *ngIf="episode.episode_number != season.episode_count" href="titles/{{title.id}}/season/{{episode.season_number}}/episode/{{episode.episode_number+1}}">Következő epizód  <mat-icon svgIcon="keyboard-arrow-right"></mat-icon></a></div>
+        </div>
+</div>
+<div class="row">
+    <div class="left">
+        <h1 class="title">
+            {{title.name}} 
+                <ng-container *ngIf="episode$ | async as episode">
+                    {{episode.season_number}}.évad - {{episode.episode_number}}.epizód <span class="year">({{episode.name}})</span>
+                </ng-container>
+        </h1>
+    </div>
+    <div class="right links">
+        <div class="social-icons">
+            <button type="button" mat-icon-button (click)="shareUsing('facebook')" class="social-icon facebook">
+                <mat-icon svgIcon="facebook-custom"></mat-icon>
+            </button>
+            <button type="button" mat-icon-button (click)="shareUsing('twitter')" class="social-icon twitter">
+                <mat-icon svgIcon="twitter-custom"></mat-icon>
+            </button>
+            <button type="button" mat-icon-button (click)="shareUsing('mail')" class="social-icon mail">
+                <mat-icon svgIcon="mail"></mat-icon>
+            </button>
+            <button type="button" mat-icon-button (click)="shareUsing('copy')" class="social-icon link">
+                <mat-icon svgIcon="link"></mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="left">
+        <div class="genres">
+            <genre-widget [genres]="title.genres"></genre-widget>
+        </div>
+
+        <div class="row rating-row">
+        </div>   
+    </div>
+    <div class="right meta-details">
+        <ng-container *ngIf="title.runtime">
+            <div class="detail">
+                <div class="name" trans>Running Time</div>
+                <div class="value">
+                    {{title.runtime}}
+                    <span trans>mins</span>
+                </div>
+            </div>
+            <mat-icon svgIcon="keyboard-arrow-right" class="separator"></mat-icon>
+        </ng-container>
+
+        <ng-container *ngIf="title.episode_count">
+                <div class="detail">
+                    <div class="name" trans>Episodes</div>
+                    <div class="value">{{title.episode_count}}</div>
+                </div>
+
+                <mat-icon svgIcon="keyboard-arrow-right" class="separator"></mat-icon>
+        </ng-container>
+
+        <div class="detail">
+            <div class="name"trans>PREMIERED</div>
+            <div class="value">{{title.release_date | formattedDate }}</div>
+        </div>
+    </div> 
+</div>
+</ng-container>

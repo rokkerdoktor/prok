@@ -10,6 +10,7 @@ import {
     LoadTitle,
     SetTitle
 } from './title-actions';
+import {Link} from '../../../models/link';
 import {TitlesService} from '../titles.service';
 import {tap} from 'rxjs/operators';
 import {ReviewService} from '../../shared/review.service';
@@ -65,6 +66,11 @@ export class TitleState {
     @Selector()
     static episode(state: TitleStateModel) {
         return state.episode;
+    }
+
+    @Selector()
+    static links(state: TitleStateModel) {
+        return state.title.links;
     }
 
     @Selector()

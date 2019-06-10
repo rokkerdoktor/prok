@@ -1,5 +1,6 @@
 import {Title, TitleCredit, TitleCreditPivot} from '../../../../models/title';
 import {Person} from '../../../../models/person';
+import {Link} from '../../../../models/link';
 import {Episode} from '../../../../models/episode';
 import {Video} from '../../../../models/video';
 import {Tag} from '../../../../../common/core/types/models/Tag';
@@ -106,6 +107,11 @@ export class AddImage {
 export class DeleteImage {
     static readonly type = '[CrupdateTitle] Delete Image';
     constructor(public image: Image) {}
+}
+
+export class DeleteLink {
+    static readonly type = '[CrupdateTitle] Delete Link';
+    constructor(public link: Link) {}
 }
 
 export class CreateTag {

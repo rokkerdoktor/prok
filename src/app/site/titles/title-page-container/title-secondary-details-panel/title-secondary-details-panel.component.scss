@@ -116,6 +116,17 @@ title-secondary-details-panel {
             display: inline-block;
           }
       }
+      .rating{
+
+        button{
+          top: 0px;
+          right: 0px;
+          left: unset;
+          opacity: 0.75;
+          position: absolute;
+          border:unset;
+        }
+      }
 
       .language{
         background: #00000061;

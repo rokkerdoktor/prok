@@ -54,6 +54,7 @@
                     <button  matTooltip="Linkek megtekintése" class="playing"  mat-fab (click)="linkmegtekintes()">
                             <mat-icon svgIcon="play-arrow"></mat-icon>
                     </button>
+                    <div class="rating" ><rating-widget  [item]="title"></rating-widget></div>
                     <div class="quality">{{quality()}}</div>
                     <div class="language" matTooltip="{{languagetext()}}"><img src="{{language()}}"> {{languagetext()}}</div>
             </div>
