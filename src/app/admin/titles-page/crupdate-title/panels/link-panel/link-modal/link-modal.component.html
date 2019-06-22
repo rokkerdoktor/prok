@@ -10,9 +10,10 @@
 </div>
 
 <form autocomplete="off" (ngSubmit)="confirm()" [formGroup]="linkForm" ngNativeValidate>
-    <mat-dialog-content class="many-inputs">
+    <div *ngIf="data.link; else linkelse">
+    <mat-dialog-content class="many-inputs"  >
         <div class="input-container">
-            <input type="hidden" name="id" id="id" value="data.link.id" formControlName="id">
+            <input *ngIf="data.link" type="hidden" name="id" id="id" value="data.link.id" formControlName="id">
             <input type="hidden" name="user_name" id="user_name" value="data.link.user_name" formControlName="user_name">
             <label for="url" trans>URL</label>
             <input type="text" required maxlength="100" id="url" formControlName="url">
@@ -42,9 +43,42 @@
             <label for="label" trans>Epizód</label>
             <input type="number" id="episode" formControlName="episode" name="episode" step="1">
          </div>
-         
-
     </mat-dialog-content>
+</div>
+<ng-template #linkelse>
+
+    <mat-dialog-content class="many-inputs" *ngIf="title$ | async as title">
+        <div class="input-container">
+            <input type="hidden" name="user_name" id="user_name">
+            <label for="url" trans>URL</label>
+            <input type="text" required maxlength="100" formControlName="url" id="url" name="url">
+        </div>
+        <div class="input-container">
+            <label for="label"  trans>Nyelv</label>
+            <select name="label" formControlName="label" >
+                <option *ngFor="let nyelv of nyelv" [ngValue]="nyelv.name">
+                  {{ nyelv.name }}
+                </option>
+            </select>
+         </div>
+         <div class="input-container">
+            <label for="label" trans>Minőség</label>
+            <select formControlName="quality" name="quality" >
+                <option *ngFor="let minoseg of minoseg" [ngValue]="minoseg.name">
+                  {{ minoseg.name }}
+                </option>
+            </select>
+         </div>
+         <div *ngIf="title.is_series==1" class="input-container">
+            <label for="label" trans>Évad</label>
+            <input  type="number" id="season" formControlName="season"  name="season" step="1">
+         </div>
+         <div *ngIf="title.is_series==1" class="input-container">
+            <label for="label" trans>Epizód</label>
+            <input type="number" id="episode" formControlName="episode" name="episode" step="1">
+         </div>
+    </mat-dialog-content>
+</ng-template>
 
     <mat-dialog-actions>
         <button (click)="close()" type="button" mat-button trans>Cancel</button>

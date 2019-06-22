@@ -10,6 +10,7 @@ import {LinkModalComponent} from './link-modal/link-modal.component';
 import {CrupdateTitleState} from '../../state/crupdate-title-state';
 import {ActivatedRoute} from '@angular/router';
 import {Modal} from '../../../../../../common/core/ui/dialogs/modal.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'link-panel',
@@ -24,6 +25,7 @@ export class LinkPanelComponent implements OnInit {
     public service : LinkService,
     private toastr : Toast,
     private modal: Modal,
+    private location: Location,
     private route: ActivatedRoute,
     private store: Store) { 
     }
@@ -34,9 +36,6 @@ interval: any;
       this.titleid=params.id;
     });
     this.service.refreshList(this.titleid);
-    this.interval = setInterval(() => { 
-      this.service.refreshList(this.titleid);
-  }, 500);
   }
 
   public server(url){
@@ -57,7 +56,8 @@ interval: any;
     ).beforeClosed().subscribe(newLink => {
       this.service.update(newLink).subscribe(res=>{
         this.service.refreshList(this.titleid);
-        this.toastr.open("Sikeresen törölve");
+        this.toastr.open("Sikeresen Szerkesztve");
+        location.reload()
         });
     });
 }
@@ -66,15 +66,26 @@ interval: any;
   public linkdelete(id){
     if(confirm('Biztos törölni akarod')) {
       this.service.delete(id).subscribe(res=>{
-        this.service.refreshList(this.titleid);
         this.toastr.open("Sikeresen törölve");
+        location.reload()
         });
+        this.service.refreshList(this.titleid);
     }
   }
 
 
 
   public addnew(){
-    alert("new");
+    this.modal.open(
+      LinkModalComponent,
+        {panelClass: 'crupdate-tag-modal-container'}
+    ).beforeClosed().subscribe(newLink => {
+      console.log(newLink);
+      this.service.create(newLink).subscribe(res=>{
+        this.toastr.open("Link hozzáadva!");
+        location.reload()
+        });
+    });
+
   }
 }

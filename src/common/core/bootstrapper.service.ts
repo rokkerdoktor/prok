@@ -57,8 +57,8 @@ export class Bootstrapper {
         // fetch bootstrap data from backend and return promise that
         // resolves once request is complete and data is passed to the app
         return new Promise((resolve, reject) => {
-           /*  const url = this.settings.getBaseUrl() + 'secure/bootstrap-data'; */
-            const url = 'http://localhost/filmgo/secure/bootstrap-data'; //Just test
+            const url = this.settings.getBaseUrl() + 'secure/bootstrap-data';
+         /*    const url = 'http://localhost/filmgo/secure/bootstrap-data';  *///Just test
             this.http.get(url).subscribe(response => {
                 this.handleData(response['data']);
                 resolve();

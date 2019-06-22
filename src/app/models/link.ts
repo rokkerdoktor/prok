@@ -8,6 +8,7 @@ export class Link {
     episode: number;
     label: string;
     quality:string;
+    approved:number;
     user_name:string;
     title?: Title[];
     constructor(params: Object = {}) {
