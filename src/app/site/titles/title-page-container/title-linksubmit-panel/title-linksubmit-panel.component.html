@@ -1,4 +1,43 @@
-<p>
-  title-linksubmit-panel works!
-</p>
-test
+
+<div class="form-group" *ngIf="title$ | async as title">  
+  <form name="add_name" id="add_name">  
+<input type="hidden" name="id" value="{{showid()}}">
+       <div class="table-responsive">  
+            <table class="table table-bordered" id="dynamic_field">  
+                 <tr>  
+                      <td><input type="text" name="link[]" placeholder="Link" class="form-control name_list" /> 
+                     <input type="hidden" name="approve" value="{{showapproved()}}" /></td>  
+                      <td>
+  
+<select  class="form-control name_list" name="hang[]">
+<option value="Magyar">Magyar</option>
+<option value="Angol">Angol</option>
+<option value="Angol, magyarfelirat">Angol, magyarfelirat</option>
+<option value="Egyéb">Egyéb</option>
+<option value="Egyéb, magyarfelirat">Egyéb, magyarfelirat</option>
+             </select>
+  </td>  
+ <td *ngIf="title.is_series==1"><input type="text" name="evad[]" placeholder="Évad" maxlength="3" class="form-control name_list" /></td><td *ngIf="title.is_series==1"><input type="text" name="episode[]" placeholder="Epizód" maxlength="3" class="form-control name_list" /></td>
+
+ <td *ngIf="title.is_series==0"><select class="form-control name_list"  name="minoseg[]">
+  
+               <option >Mozis</option>
+<option >TV Felvétel</option>
+<option >DVD Minőség</option>
+<option >DVD Minőség (mozis hanggal)</option>
+<option >R5/TS</option>
+<option >R5</option>
+<option >HDRIP</option>
+<option >BDRip</option>
+             </select></td>
+
+
+                      <td><input type="text" name="bekuldoneve"  value="{{currentUser.get('display_name')}}" placeholder="Beküldő neve" class="form-control name_list" readonly="readonly" ></td>  
+                      <td *ngIf="title.is_series==0"><button type="button" name="add" id="add" class="btn btn-success">Új link</button></td> 
+                 </tr>  
+            </table>  
+          (<i>Miután rákattintotál a "BEKÜLDÉS" gombra elképzelhető, hogy pár mp-ig dolgozik az oldal.Ez főként nagy mennyiségű linknél lehet jelemző.</i>)<br>
+           <button *ngIf="title.is_series==1" type="button" name="add" id="add" class="btn btn-success">Új link</button><input type="button" name="submit" id="submit" class="btn btn-info" value="BEKÜLDÉS" />  
+       </div>  
+  </form>  
+</div>  

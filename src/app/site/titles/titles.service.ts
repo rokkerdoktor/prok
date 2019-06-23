@@ -40,7 +40,7 @@ export class TitlesService {
 
     public get(titleId: number, queryParams?: GetTitleQueryParams): BackendResponse<GetTitleResponse> {
         return this.http.get('titles/' + titleId, queryParams);  
-       /*  return this.http.get('http://localhost/filmgo/secure/titles/' + titleId, queryParams); */
+        /* return this.http.get('http://localhost/filmgo/secure/titles/' + titleId, queryParams); */
     }
     public getComment(titleId: number): BackendResponse<{comments: Comment[]}> {
         return this.http.get('comment/' + titleId);
