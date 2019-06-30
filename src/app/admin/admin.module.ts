@@ -27,6 +27,7 @@ import {VideosPageComponent} from './videos-page/videos-page.component';
 import {ListsPageComponent} from './lists-page/lists-page.component';
 import { LinkPanelComponent } from './titles-page/crupdate-title/panels/link-panel/link-panel.component';
 import { LinkModalComponent } from './titles-page/crupdate-title/panels/link-panel/link-modal/link-modal.component';
+import { LinkapprovedComponent } from './linkapproved/linkapproved.component';
 
 @NgModule({
     imports: [
@@ -72,6 +73,7 @@ import { LinkModalComponent } from './titles-page/crupdate-title/panels/link-pan
         ListsPageComponent,
         LinkPanelComponent,
         LinkModalComponent,
+        LinkapprovedComponent,
     ],
     entryComponents: [
         LinkModalComponent,

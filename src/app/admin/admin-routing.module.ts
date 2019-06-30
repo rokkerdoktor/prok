@@ -16,7 +16,7 @@ import {PeoplePageComponent} from './people-page/people-page.component';
 import {CrupdatePersonPageComponent} from './people-page/crupdate-person-page/crupdate-person-page.component';
 import {VideosPageComponent} from './videos-page/videos-page.component';
 import {ListsPageComponent} from './lists-page/lists-page.component';
-
+import {LinkapprovedComponent} from './linkapproved/linkapproved.component'
 const routes: Routes = [
     {
         path: '',
@@ -25,6 +25,12 @@ const routes: Routes = [
         canActivateChild: [AuthGuard, CheckPermissionsGuard],
         data: {permissions: ['admin.access']},
         children: [
+            // Link approved
+            {
+                path: 'link-approved',
+                component: LinkapprovedComponent,
+                data: {permissions: ['videos.view']}
+            },            
             // videos
             {
                 path: 'videos',

@@ -31,4 +31,10 @@ export class LinkService {
         /* return this.http.put(this.rootURL+'link/'+link.id, link); */
         return this.http.post('secure/link', link);
       }
+      listnotapproved(){
+        return this.http.get('secure/linklist'); 
+      }
+      approved(link: Link){
+        return this.http.put('secure/linkapproved/'+link.id, link);
+      }
 }

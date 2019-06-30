@@ -1,0 +1,31 @@
+<div class="table">
+  <div class="header">
+    <div class="title">Server</div>
+    <div class="title">Nyelv</div>
+    <div class="title">Minőség</div>
+    <div class="title">Beküldő</div>
+    <div class="title">Évad</div>
+    <div class="title">Epizód</div>
+    <div class="title"></div>
+    <div class="title"></div>
+  </div>
+  <div *ngFor="let link of links | async"  class="row">
+    <div class="action"><a href="{{link.url}}" target="_blank">{{server(link.url)}}</a></div>
+    <div class="action">  {{link.label}}</div>
+    <div class="action">  {{link.quality}}</div>
+    <div class="action">  {{link.user_name}}</div>
+    <div class="action" *ngIf="link.season != 0" >  {{link.season}}</div>
+    <div class="action" *ngIf="link.episode != 0" >  {{link.episode}}</div>
+    <div class="action">
+        <button  style="color:green" mat-icon-button [matTooltip]="'Elfogadva' | trans" [matTooltip]="Szerkesztes"  (click)="approved(link)">
+            <mat-icon svgIcon="add"></mat-icon>
+        </button>
+    </div>
+    <div class="action">
+        <button style="color:red" mat-icon-button [matTooltip]="'Delete selected' | trans" (click)="removed(link.id)">
+            <mat-icon svgIcon="delete"></mat-icon>
+        </button>
+    </div>
+  </div>
+
+</div>
